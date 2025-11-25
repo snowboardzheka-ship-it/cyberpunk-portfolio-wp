@@ -1,0 +1,354 @@
+{
+    "$schema": "https://schemas.wp.org/wp/6.4/theme.json",
+    "version": 2,
+    "settings": {
+        "appearanceTools": true,
+        "color": {
+            "defaultPalette": false,
+            "palette": [
+                {
+                    "slug": "primary",
+                    "name": "Primary Neon Cyan",
+                    "color": "#00ffff"
+                },
+                {
+                    "slug": "secondary", 
+                    "name": "Secondary Neon Magenta",
+                    "color": "#ff00ff"
+                },
+                {
+                    "slug": "accent",
+                    "name": "Accent Neon Green",
+                    "color": "#00ff00"
+                },
+                {
+                    "slug": "neon-purple",
+                    "name": "Neon Purple",
+                    "color": "#ff1493"
+                },
+                {
+                    "slug": "neon-pink",
+                    "name": "Neon Pink",
+                    "color": "#ff00ff"
+                },
+                {
+                    "slug": "dark-bg",
+                    "name": "Dark Background",
+                    "color": "#0a0a0a"
+                },
+                {
+                    "slug": "darker-bg",
+                    "name": "Darker Background",
+                    "color": "#000000"
+                },
+                {
+                    "slug": "light-text",
+                    "name": "Light Text",
+                    "color": "#ffffff"
+                },
+                {
+                    "slug": "gray-text",
+                    "name": "Gray Text",
+                    "color": "#b0b0b0"
+                }
+            ],
+            "gradients": [
+                {
+                    "slug": "cyberpunk-gradient",
+                    "name": "Cyberpunk Gradient",
+                    "gradient": "linear-gradient(45deg, #00ffff, #ff00ff, #00ff00)"
+                },
+                {
+                    "slug": "neon-gradient",
+                    "name": "Neon Glow Gradient", 
+                    "gradient": "linear-gradient(90deg, #00ffff 0%, #ff00ff 50%, #00ff00 100%)"
+                },
+                {
+                    "slug": "portal-gradient",
+                    "name": "Portal Effect",
+                    "gradient": "radial-gradient(circle, rgba(0,255,255,0.3) 0%, rgba(255,0,255,0.2) 50%, rgba(0,0,0,0.8) 100%)"
+                }
+            ],
+            "duotone": [
+                {
+                    "slug": "cyberpunk-duotone",
+                    "colors": ["#000000", "#00ffff"],
+                    "name": "Cyberpunk Duotone"
+                },
+                {
+                    "slug": "neon-duotone", 
+                    "colors": ["#0a0a0a", "#ff00ff"],
+                    "name": "Neon Duotone"
+                }
+            ]
+        },
+        "typography": {
+            "defaultFontSizes": false,
+            "fluid": true,
+            "fontFamilies": [
+                {
+                    "slug": "orbitron",
+                    "name": "Orbitron",
+                    "fontFamily": "'Orbitron', monospace"
+                },
+                {
+                    "slug": "rajdhani",
+                    "name": "Rajdhani", 
+                    "fontFamily": "'Rajdhani', sans-serif"
+                },
+                {
+                    "slug": "roboto",
+                    "name": "Roboto",
+                    "fontFamily": "'Roboto', sans-serif"
+                },
+                {
+                    "slug": "system-ui",
+                    "name": "System UI",
+                    "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+                }
+            ],
+            "fontSizes": [
+                {
+                    "slug": "xs",
+                    "size": "0.75rem",
+                    "name": "Extra Small"
+                },
+                {
+                    "slug": "sm", 
+                    "size": "0.875rem",
+                    "name": "Small"
+                },
+                {
+                    "slug": "base",
+                    "size": "1rem",
+                    "name": "Base"
+                },
+                {
+                    "slug": "lg",
+                    "size": "1.125rem", 
+                    "name": "Large"
+                },
+                {
+                    "slug": "xl",
+                    "size": "1.25rem",
+                    "name": "Extra Large"
+                },
+                {
+                    "slug": "2xl",
+                    "size": "1.5rem",
+                    "name": "2X Large"
+                },
+                {
+                    "slug": "3xl",
+                    "size": "1.875rem",
+                    "name": "3X Large"
+                },
+                {
+                    "slug": "4xl",
+                    "size": "2.25rem",
+                    "name": "4X Large"
+                },
+                {
+                    "slug": "5xl",
+                    "size": "3rem",
+                    "name": "5X Large"
+                },
+                {
+                    "slug": "6xl",
+                    "size": "3.75rem",
+                    "name": "6X Large"
+                }
+            ]
+        },
+        "spacing": {
+            "units": ["px", "em", "rem", "vh", "vw", "%"],
+            "spacingSizes": [
+                {
+                    "slug": "10",
+                    "size": "0.625rem",
+                    "name": "10"
+                },
+                {
+                    "slug": "20",
+                    "size": "1.25rem",
+                    "name": "20"
+                },
+                {
+                    "slug": "30",
+                    "size": "1.875rem",
+                    "name": "30"
+                },
+                {
+                    "slug": "40",
+                    "size": "2.5rem",
+                    "name": "40"
+                },
+                {
+                    "slug": "60",
+                    "size": "3.75rem",
+                    "name": "60"
+                },
+                {
+                    "slug": "80",
+                    "size": "5rem",
+                    "name": "80"
+                }
+            ]
+        },
+        "blocks": {
+            "core/button": {
+                "border": {
+                    "radius": true
+                },
+                "color": {
+                    "text": true,
+                    "background": true
+                }
+            },
+            "core/image": {
+                "border": {
+                    "radius": true
+                }
+            },
+            "core/quote": {
+                "border": {
+                    "left": true,
+                    "radius": true
+                }
+            }
+        },
+        "layout": {
+            "contentSize": "840px",
+            "wideSize": "1200px"
+        },
+        "custom": {
+            "glow": {
+                "small": "8px",
+                "medium": "16px", 
+                "large": "24px",
+                "intense": "32px"
+            },
+            "animation": {
+                "duration": {
+                    "fast": "0.2s",
+                    "normal": "0.3s",
+                    "slow": "0.5s"
+                },
+                "easing": {
+                    "smooth": "cubic-bezier(0.4, 0, 0.2, 1)",
+                    "bounce": "cubic-bezier(0.68, -0.55, 0.265, 1.55)"
+                }
+            },
+            "zIndex": {
+                "dropdown": "1000",
+                "sticky": "1020",
+                "fixed": "1030",
+                "modal": "1040",
+                "popover": "1050",
+                "tooltip": "1060"
+            }
+        }
+    },
+    "styles": {
+        "color": {
+            "text": "#ffffff",
+            "background": "#0a0a0a",
+            "primary": "#00ffff",
+            "secondary": "#ff00ff"
+        },
+        "typography": {
+            "fontFamily": "'Rajdhani', sans-serif",
+            "fontSize": "1rem",
+            "lineHeight": "1.6"
+        },
+        "spacing": {
+            "blockGap": "2rem"
+        },
+        "elements": {
+            "link": {
+                "color": {
+                    "text": "#00ffff"
+                },
+                ":hover": {
+                    "color": {
+                        "text": "#ff00ff"
+                    }
+                }
+            },
+            "heading": {
+                "typography": {
+                    "fontFamily": "'Orbitron', monospace",
+                    "fontWeight": "700"
+                },
+                "color": {
+                    "text": "#ffffff"
+                }
+            }
+        },
+        "blocks": {
+            "core/button": {
+                "border": {
+                    "radius": "8px"
+                },
+                "color": {
+                    "background": "#00ffff",
+                    "text": "#000000"
+                },
+                "typography": {
+                    "fontWeight": "600"
+                },
+                ":hover": {
+                    "color": {
+                        "background": "#ff00ff"
+                    }
+                }
+            },
+            "core/image": {
+                "border": {
+                    "radius": "12px"
+                }
+            }
+        }
+    },
+    "templateParts": [
+        {
+            "name": "header",
+            "title": "Header",
+            "area": "uncategorized"
+        },
+        {
+            "name": "footer", 
+            "title": "Footer",
+            "area": "uncategorized"
+        }
+    ],
+    "template": [
+        [
+            "core/template-part",
+            {
+                "tagName": "header",
+                "slug": "header"
+            }
+        ],
+        [
+            "core/pattern",
+            {
+                "slug": "my-portfolio/hero-section"
+            }
+        ],
+        [
+            "core/template-part",
+            {
+                "tagName": "footer", 
+                "slug": "footer"
+            }
+        ]
+    ],
+    "patterns": [
+        "my-portfolio/hero-section",
+        "my-portfolio/about-section",
+        "my-portfolio/services-section",
+        "my-portfolio/portfolio-carousel",
+        "my-portfolio/contact-section"
+    ]
+}

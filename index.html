@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio Theme - Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #00ffff;
+            --secondary-color: #ff00ff;
+            --accent-color: #00ff00;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #000000;
+            --light-text: #ffffff;
+            --gray-text: #b0b0b0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--darker-bg);
+            padding: 2rem 0;
+            border-bottom: 2px solid var(--primary-color);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        h1 {
+            font-family: 'Orbitron', monospace;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            text-align: center;
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--gray-text);
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        nav {
+            background: rgba(0, 255, 255, 0.1);
+            padding: 1rem 0;
+            margin: 2rem 0;
+            border-radius: 10px;
+            border: 1px solid var(--primary-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: var(--primary-color);
+            color: var(--darker-bg);
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+
+        main {
+            padding: 2rem 0;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        h2 {
+            font-family: 'Orbitron', monospace;
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        h4 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--light-text);
+        }
+
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background: var(--darker-bg);
+            color: var(--accent-color);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            border: 1px solid var(--accent-color);
+        }
+
+        pre {
+            background: var(--darker-bg);
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        pre code {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .highlight {
+            background: rgba(0, 255, 255, 0.1);
+            padding: 1rem;
+            border-left: 4px solid var(--primary-color);
+            border-radius: 0 5px 5px 0;
+            margin: 1rem 0;
+        }
+
+        .warning {
+            background: rgba(255, 0, 255, 0.1);
+            padding: 1rem;
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 0 5px 5px 0;
+            margin: 1rem 0;
+        }
+
+        .feature-box {
+            background: rgba(0, 255, 0, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--accent-color);
+            margin: 1rem 0;
+        }
+
+        .feature-box h4 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 2px solid var(--primary-color);
+            margin-top: 3rem;
+            color: var(--gray-text);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>My Portfolio Theme Documentation</h1>
+            <p class="subtitle">Revolutionary WordPress Theme with 3D Carousel Technology</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#customization">Customization</a></li>
+                <li><a href="#3d-carousel">3D Carousel</a></li>
+                <li><a href="#customizer">WordPress Customizer</a></li>
+                <li><a href="#pages">Page Templates</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#troubleshooting">Troubleshooting</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="introduction">
+                <h2>🚀 Welcome to My Portfolio Theme</h2>
+                <p>My Portfolio is a cutting-edge WordPress theme designed for creative professionals who want to showcase their work with stunning visual effects and modern cyberpunk aesthetics. This theme features revolutionary 3D carousel technology, parallax effects, and neon visual elements that will make your portfolio stand out from the crowd.</p>
+                
+                <div class="feature-box">
+                    <h4>🎮 Key Highlights</h4>
+                    <ul>
+                        <li><strong>Revolutionary 3D Carousel:</strong> Techno Orb Carousel with 60fps animations</li>
+                        <li><strong>Cyberpunk Design:</strong> Neon colors, glow effects, and futuristic aesthetics</li>
+                        <li><strong>Parallax Effects:</strong> Multi-layer depth with smooth scrolling</li>
+                        <li><strong>WordPress Customizer:</strong> Real-time customization without coding</li>
+                        <li><strong>Mobile Responsive:</strong> Optimized for all devices and screen sizes</li>
+                        <li><strong>Performance Optimized:</strong> Fast loading and smooth animations</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="installation">
+                <h2>📦 Installation Guide</h2>
+                
+                <h3>Quick Installation</h3>
+                <ol>
+                    <li>Download the theme ZIP file from ThemeForest</li>
+                    <li>Log in to your WordPress admin panel</li>
+                    <li>Navigate to <code>Appearance → Themes</code></li>
+                    <li>Click <code>Add New</code> then <code>Upload Theme</code></li>
+                    <li>Choose the ZIP file and click <code>Install Now</code></li>
+                    <li>After installation, click <code>Activate</code> to enable the theme</li>
+                </ol>
+
+                <div class="highlight">
+                    <h4>✅ System Requirements</h4>
+                    <ul>
+                        <li><strong>WordPress:</strong> 5.0 or higher</li>
+                        <li><strong>PHP:</strong> 7.4 or higher</li>
+                        <li><strong>Memory:</strong> Minimum 512MB RAM</li>
+                        <li><strong>Browser:</strong> Modern browser with JavaScript enabled</li>
+                    </ul>
+                </div>
+
+                <h3>Manual Installation (Advanced)</h3>
+                <p>For developers who prefer manual installation:</p>
+                <ol>
+                    <li>Extract the theme ZIP file</li>
+                    <li>Upload the <code>my-portfolio</code> folder to <code>/wp-content/themes/</code></li>
+                    <li>Activate the theme through <code>Appearance → Themes</code></li>
+                </ol>
+            </section>
+
+            <section id="customization">
+                <h2>🎨 Customization Guide</h2>
+                
+                <h3>WordPress Customizer</h3>
+                <p>The theme includes comprehensive customization options through WordPress Customizer:</p>
+                
+                <div class="grid">
+                    <div class="card">
+                        <h4>🎨 Colors</h4>
+                        <ul>
+                            <li>Primary Color (Cyan)</li>
+                            <li>Secondary Color (Magenta)</li>
+                            <li>Accent Color (Green)</li>
+                            <li>Real-time preview</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>📝 Content</h4>
+                        <ul>
+                            <li>Hero Title</li>
+                            <li>Hero Subtitle</li>
+                            <li>Site Logo</li>
+                            <li>Custom Logo Support</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>🌐 Social Media</h4>
+                        <ul>
+                            <li>Telegram</li>
+                            <li>Instagram</li>
+                            <li>WhatsApp</li>
+                            <li>LinkedIn</li>
+                            <li>GitHub</li>
+                            <li>YouTube</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Accessing Customizer</h3>
+                <ol>
+                    <li>Go to your WordPress admin panel</li>
+                    <li>Navigate to <code>Appearance → Customize</code></li>
+                    <li>Adjust settings with live preview</li>
+                    <li>Click <code>Publish</code> to save changes</li>
+                </ol>
+            </section>
+
+            <section id="3d-carousel">
+                <h2>🌐 3D Techno Orb Carousel</h2>
+                
+                <p>The theme features a revolutionary 3D carousel system called "Techno Orb Carousel" that creates stunning visual effects for showcasing your portfolio projects.</p>
+
+                <h3>Features</h3>
+                <ul>
+                    <li><strong>60fps Animations:</strong> Smooth hardware-accelerated transitions</li>
+                    <li><strong>Auto-rotation:</strong> Customizable timing and direction</li>
+                    <li><strong>Touch Support:</strong> Swipe navigation on mobile devices</li>
+                    <li><strong>Keyboard Navigation:</strong> Arrow key support</li>
+                    <li><strong>Infinite Scroll:</strong> Seamless looping</li>
+                    <li><strong>3D Positioning:</strong> Dynamic depth effects</li>
+                </ul>
+
+                <h3>Customization Options</h3>
+                <p>The carousel can be customized through data attributes:</p>
+                
+                <pre><code>&lt;div class="techno-orb-carousel" 
+     data-radius="400" 
+     data-height="300" 
+     data-max-visible="5" 
+     data-auto-rotate="true" 
+     data-auto-rotate-delay="4000"
+     data-show-controls="true"
+     data-show-dots="true"&gt;</code></pre>
+
+                <div class="highlight">
+                    <h4>Parameter Reference</h4>
+                    <ul>
+                        <li><code>data-radius:</code> Radius of the carousel orbit (px)</li>
+                        <li><code>data-height:</code> Height positioning (px)</li>
+                        <li><code>data-max-visible:</code> Number of visible items</li>
+                        <li><code>data-auto-rotate:</code> Enable/disable auto-rotation (true/false)</li>
+                        <li><code>data-auto-rotate-delay:</code> Rotation delay in milliseconds</li>
+                        <li><code>data-show-controls:</code> Show navigation buttons (true/false)</li>
+                        <li><code>data-show-dots:</code> Show dot indicators (true/false)</li>
+                    </ul>
+                </div>
+
+                <h3>Adding Portfolio Projects</h3>
+                <p>To add projects to the carousel, edit the <code>page-portfolio.php</code> template and add your project content within the carousel structure.</p>
+            </section>
+
+            <section id="customizer">
+                <h2>⚙️ WordPress Customizer Details</h2>
+                
+                <h3>Color Scheme</h3>
+                <p>Customize your theme's color palette:</p>
+                <ul>
+                    <li><strong>Primary Color:</strong> Main theme color (default: #00ffff)</li>
+                    <li><strong>Secondary Color:</strong> Accent color (default: #ff00ff)</li>
+                    <li><strong>Live Preview:</strong> See changes instantly</li>
+                </ul>
+
+                <h3>Social Media Links</h3>
+                <p>Add your social media profiles:</p>
+                <div class="grid">
+                    <div class="card">
+                        <h4>🔗 Supported Platforms</h4>
+                        <ul>
+                            <li>Telegram (https://t.me/username)</li>
+                            <li>Instagram (@username)</li>
+                            <li>WhatsApp (https://wa.me/1234567890)</li>
+                            <li>LinkedIn (full profile URL)</li>
+                            <li>GitHub (@username)</li>
+                            <li>YouTube (channel URL)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Content Settings</h3>
+                <ul>
+                    <li><strong>Hero Title:</strong> Main heading text</li>
+                    <li><strong>Hero Subtitle:</strong> Descriptive text below title</li>
+                    <li><strong>Logo Upload:</strong> Custom site logo</li>
+                </ul>
+            </section>
+
+            <section id="pages">
+                <h2>📄 Page Templates</h2>
+                
+                <p>The theme includes several custom page templates optimized for different content types:</p>
+
+                <div class="grid">
+                    <div class="card">
+                        <h4>🏠 Homepage Template</h4>
+                        <p>Main landing page with hero section, about, and services preview</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>💼 Portfolio Template</h4>
+                        <p>Dedicated page featuring the 3D carousel for showcasing projects</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>📞 Contact Template</h4>
+                        <p>Contact page with AJAX form and brain-implant concept design</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>🛠️ Services Template</h4>
+                        <p>Services listing page with interactive calculator</p>
+                    </div>
+                </div>
+
+                <h3>Creating Pages</h3>
+                <ol>
+                    <li>Go to <code>Pages → Add New</code></li>
+                    <li>Enter page title and content</li>
+                    <li>In "Page Attributes" box, select appropriate template</li>
+                    <li>Publish the page</li>
+                </ol>
+
+                <h3>Adding Pages to Menu</h3>
+                <ol>
+                    <li>Navigate to <code>Appearance → Menus</code></li>
+                    <li>Create a new menu or edit existing one</li>
+                    <li>Add your pages to the menu</li>
+                    <li>Assign menu to "Primary Menu" location</li>
+                </ol>
+            </section>
+
+            <section id="features">
+                <h2>✨ Advanced Features</h2>
+                
+                <h3>Parallax Effects</h3>
+                <p>The theme includes sophisticated parallax scrolling with multi-layer depth effects:</p>
+                <ul>
+                    <li><strong>Hero Portal Effect:</strong> Dissolve transition with glowing shadows</li>
+                    <li><strong>Multi-layer Depth:</strong> Different scrolling speeds for realistic depth</li>
+                    <li><strong>Performance Optimized:</strong> 60fps smooth scrolling</li>
+                    <li><strong>Mobile Compatible:</strong> Optimized for touch devices</li>
+                </ul>
+
+                <h3>Animation System</h3>
+                <ul>
+                    <li><strong>Typewriter Effect:</strong> Character-by-character text reveal</li>
+                    <li><strong>Glow Animations:</strong> Pulsing neon effects</li>
+                    <li><strong>Hover Transitions:</strong> Smooth interactive feedback</li>
+                    <li><strong>Loading Animations:</strong> Professional page transitions</li>
+                </ul>
+
+                <h3>Typography</h3>
+                <p>The theme uses carefully selected fonts for optimal readability and cyberpunk aesthetics:</p>
+                <ul>
+                    <li><strong>Orbitron:</strong> Futuristic heading font</li>
+                    <li><strong>Rajdhani:</strong> Clean, readable body text</li>
+                    <li><strong>System Fallbacks:</strong> Ensures compatibility</li>
+                </ul>
+
+                <h3>Mobile Optimization</h3>
+                <ul>
+                    <li><strong>Responsive Design:</strong> Adapts to all screen sizes</li>
+                    <li><strong>Burger Menu:</strong> Clean mobile navigation</li>
+                    <li><strong>Touch Gestures:</strong> Swipe support for carousel</li>
+                    <li><strong>Performance:</strong> Optimized for mobile devices</li>
+                </ul>
+            </section>
+
+            <section id="troubleshooting">
+                <h2>🔧 Troubleshooting</h2>
+                
+                <h3>Common Issues</h3>
+                
+                <div class="warning">
+                    <h4>⚠️ 3D Carousel Not Working</h4>
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Ensure JavaScript is enabled in your browser</li>
+                        <li>Check browser console for JavaScript errors</li>
+                        <li>Verify carousel-sphere.js file is properly enqueued</li>
+                        <li>Clear browser cache and WordPress cache</li>
+                    </ol>
+                </div>
+
+                <div class="warning">
+                    <h4>⚠️ Styles Not Loading</h4>
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Clear all caching plugins</li>
+                        <li>Check file permissions on theme files</li>
+                        <li>Verify CSS files are properly linked</li>
+                        <li>Deactivate other plugins temporarily</li>
+                    </ol>
+                </div>
+
+                <div class="warning">
+                    <h4>⚠️ Customizer Changes Not Saving</h4>
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Check WordPress memory limit</li>
+                        <li>Disable other themes temporarily</li>
+                        <li>Increase PHP max_execution_time</li>
+                        <li>Contact hosting provider if issues persist</li>
+                    </ol>
+                </div>
+
+                <h3>Performance Optimization</h3>
+                <ul>
+                    <li><strong>Caching:</strong> Use a caching plugin for faster loading</li>
+                    <li><strong>Images:</strong> Optimize images before uploading</li>
+                    <li><strong>Plugins:</strong> Minimize number of active plugins</li>
+                    <li><strong>Hosting:</strong> Ensure adequate server resources</li>
+                </ul>
+            </section>
+
+            <section id="faq">
+                <h2>❓ Frequently Asked Questions</h2>
+                
+                <h3>General Questions</h3>
+                
+                <h4>Q: Do I need coding skills to use this theme?</h4>
+                <p><strong>A:</strong> No! The theme is designed to be user-friendly. All major customizations can be done through the WordPress Customizer interface without coding knowledge.</p>
+
+                <h4>Q: Is the theme mobile-friendly?</h4>
+                <p><strong>A:</strong> Yes! The theme is fully responsive and includes touch-optimized navigation, mobile burger menu, and optimized carousel for mobile devices.</p>
+
+                <h4>Q: Can I change the cyberpunk color scheme?</h4>
+                <p><strong>A:</strong> Absolutely! Use the WordPress Customizer to change primary, secondary, and accent colors in real-time with live preview.</p>
+
+                <h4>Q: Is the 3D carousel performance-heavy?</h4>
+                <p><strong>A:</strong> The carousel is optimized for performance with hardware acceleration and efficient CSS3 transforms. It runs smoothly on modern devices.</p>
+
+                <h3>Technical Questions</h3>
+
+                <h4>Q: Does the theme support Gutenberg blocks?</h4>
+                <p><strong>A:</strong> Yes! The theme includes theme.json configuration for full Gutenberg support with custom styling for various block types.</p>
+
+                <h4>Q: Can I import demo content?</h4>
+                <p><strong>A:</strong> The theme includes built-in demo content that appears automatically when you use the provided page templates. No separate import process required.</p>
+
+                <h4>Q: Is the theme SEO optimized?</h4>
+                <p><strong>A:</strong> Yes! The theme includes semantic HTML5 markup, optimized meta tags, fast loading times, and clean code structure for better search engine visibility.</p>
+
+                <h4>Q: What browsers are supported?</h4>
+                <p><strong>A:</strong> The theme works on all modern browsers including Chrome, Firefox, Safari, and Edge. Internet Explorer 11+ is supported with limited effects.</p>
+
+                <h3>Support Questions</h3>
+
+                <h4>Q: Where can I get additional support?</h4>
+                <p><strong>A:</strong> For theme support, please contact the theme author through ThemeForest. Include detailed information about your issue and steps to reproduce.</p>
+
+                <h4>Q: Can I modify the theme code?</h4>
+                <p><strong>A:</strong> Yes! The theme follows WordPress coding standards and is well-documented. However, be sure to create a child theme for customizations to prevent loss during updates.</p>
+
+                <h4>Q: Does the theme include child theme?</h4>
+                <p><strong>A:</strong> The theme follows WordPress best practices, and you can create a child theme for customizations using standard WordPress child theme structure.</p>
+            </section>
+
+            <section id="changelog">
+                <h2>📋 Changelog</h2>
+                
+                <h3>Version 1.0.0 - Initial Release</h3>
+                <ul>
+                    <li>✨ Revolutionary 3D Techno Orb Carousel implementation</li>
+                    <li>🎮 Advanced parallax effects with multi-layer depth</li>
+                    <li>⚙️ Comprehensive WordPress Customizer integration</li>
+                    <li>📱 Mobile-first responsive design</li>
+                    <li>🌈 Cyberpunk neon aesthetic with customizable colors</li>
+                    <li>⌨️ Typewriter animation system</li>
+                    <li>📡 AJAX-powered contact forms</li>
+                    <li>🌐 Social media integration (6 platforms)</li>
+                    <li>🔍 SEO optimization and semantic markup</li>
+                    <li>🌍 Cross-browser compatibility</li>
+                    <li>⚡ Performance optimization</li>
+                    <li>📖 Translation-ready structure</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 My Portfolio Theme Documentation. Created by NewTON.</p>
+            <p>For theme support, please contact through ThemeForest marketplace.</p>
+        </footer>
+    </div>
+</body>
+</html>

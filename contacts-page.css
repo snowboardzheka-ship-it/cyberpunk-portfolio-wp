@@ -1,0 +1,917 @@
+/* ===============================================================
+   BRAIN-IMPLANT КОНТАКТЫ - ПОЛНАЯ ЭФФЕКТНАЯ ВЕРСИЯ
+   ===============================================================
+   КОНЦЕПЦИЯ: Нейронная сеть мозга с имплантом
+   ВСЕ ЭФФЕКТЫ: Glitch, Neon Glow, Анимации, Hover
+   =============================================================== */
+/* ===============================================================
+   ГЕРО СЕКЦИЯ - СТАТУС ОНЛАЙН
+   =============================================================== */
+.contacts-hero {
+    height: 300px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.contacts-title {
+    font-size: 4rem;
+    font-weight: bold;
+    background: linear-gradient(90deg,
+    var(--secondary-color),
+    var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: var(--glow-intense) var(--primary-color);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.contacts-subtitle {
+    font-size: 1.5rem;
+    opacity: 0.9;
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(90deg,
+    var(--primary-color),
+    var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Статус онлайн */
+.contact-availability {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent-green);
+    position: relative;
+    box-shadow: var(--glow-medium) var(--accent-green);
+}
+
+.status-indicator::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    background: var(--accent-green);
+    opacity: 0.5;
+}
+
+.status-text {
+    color: var(--text-bright);
+    font-size: 1.1rem;
+    text-shadow: var(--glow-soft) var(--primary-cyan);
+}
+
+/* ===============================================================
+   BRAIN-IMPLANT СЕКЦИЯ - ОСНОВНОЙ КОНТЕНТ
+   =============================================================== */
+.brain-implant-section {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ===============================================================
+   ГЛАВНЫЙ LAYOUT - ТРИ КОЛОНКИ
+   =============================================================== */
+.brain-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    border: 4px solid;
+    border-radius: 20px;
+    padding: 20px;
+    border-color: var(--primary-color);
+        box-shadow: 0 50px 200px linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary-color) 20%, 
+        var(--secondary-color) 50%, 
+        var(--accent-color) 80%, 
+        transparent 100%),
+        0 0 20px rgba(255, 255, 255, 0.3); 
+    animation: header-glow 3s ease-in-out infinite alternate;
+}
+
+/* ===============================================================
+   ЛЕВАЯ КОЛОНКА - НЕЙРОНЫ (КОНТАКТЫ)
+   =============================================================== */
+.brain-neurons {
+    flex: 0 0 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+/* НЕЙРОН - ОСНОВНОЙ СТИЛЬ */
+.neuron {
+    background: linear-gradient(80deg, 
+        var(--primary-color), 
+        var(--dark-bg),   
+        var(--accent-color));
+    border: 2px solid;
+    border-radius: 20px;
+    padding: 30px 25px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+
+
+/* Внутренний glow эффект */
+.neuron::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 22px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.neuron:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(255, 255, 255, 0.1);
+}
+
+.neuron:hover::before {
+    opacity: 0.7;
+}
+
+/* EMAIL НЕЙРОН (ЦИАН) */
+.neuron-email {
+    border-color: var(--primary-cyan);
+    box-shadow: 
+        0 15px 35px rgba(0, 255, 255, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.neuron-email::before {
+    background: linear-gradient(45deg, 
+        transparent 0%, 
+        rgba(0, 255, 255, 0.3) 50%, 
+        transparent 100%);
+}
+
+.neuron-email:hover {
+    box-shadow: 
+        0 25px 50px rgba(0, 255, 255, 0.25),
+        0 0 40px rgba(0, 255, 255, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* PHONE НЕЙРОН (ФИОЛЕТОВЫЙ) */
+.neuron-phone {
+    border-color: var(--secondary-purple);
+    box-shadow: 
+        0 15px 35px rgba(255, 0, 255, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.neuron-phone::before {
+    background: linear-gradient(45deg, 
+        transparent 0%, 
+        rgba(255, 0, 255, 0.3) 50%, 
+        transparent 100%);
+}
+
+.neuron-phone:hover {
+    box-shadow: 
+        0 25px 50px rgba(255, 0, 255, 0.25),
+        0 0 40px rgba(255, 0, 255, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* TELEGRAM НЕЙРОН (ЗЕЛЕНЫЙ) */
+.neuron-telegram {
+    border-color: var(--accent-green);
+    box-shadow: 
+        0 15px 35px rgba(0, 255, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.neuron-telegram::before {
+    background: linear-gradient(45deg, 
+        transparent 0%, 
+        rgba(0, 255, 0, 0.3) 50%, 
+        transparent 100%);
+}
+
+.neuron-telegram:hover {
+    box-shadow: 
+        0 25px 50px rgba(0, 255, 0, 0.25),
+        0 0 40px rgba(0, 255, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* ЛАБЕЛ НЕЙРОНА (ЗАГОЛОВОК) */
+.neuron-email,
+.neuron-phone,
+.neuron-telegram{
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--text-bright);
+    margin-bottom: 15px;
+    text-align: center;
+    text-shadow: var(--glow-soft) rgba(255, 255, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Детали нейрона */
+.neuron-details {
+    text-align: center;
+}
+
+.contact-info {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    margin: 0;
+    opacity: 0.9;
+    text-shadow: var(--glow-soft) rgba(0, 255, 255, 0.3);
+}
+
+/* ===============================================================
+   ПРАВАЯ КОЛОНКА - ИНТЕРФЕЙС СВЯЗИ (ФОРМА)
+   =============================================================== */
+.interface-connection {
+    flex: 0 0 400px;
+}
+
+.connection-panel {
+    background: linear-gradient(45deg, 
+        var(--primary-color), 
+        var(--dark-bg), 
+        var(--accent-color), 
+        var(--dark-bg), 
+        var(--secondary-color), 
+        var(--dark-bg), 
+        var(--neon-yellow), 
+        var(--dark-bg), 
+        var(--primary-color));
+    border-radius: 25px;
+    padding: 40px;
+    position: relative;
+    backdrop-filter: blur(15px);
+    border: 2px solid;
+    border-radius: 20px;
+    border-color: var(--primary-color);
+        box-shadow: 0 3px 30px linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary-color) 20%, 
+        var(--secondary-color) 50%, 
+        var(--accent-color) 80%, 
+        transparent 100%),
+        0 0 20px rgba(255, 255, 255, 0.3); 
+    animation: header-glow 3s ease-in-out infinite alternate;
+    overflow: hidden;
+}
+
+/* ===============================================================
+   ФОРМА КОНТАКТОВ
+   =============================================================== */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    border-color: var(--primary-color);
+        box-shadow: 0 3px 30px linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary-color) 20%, 
+        var(--secondary-color) 50%, 
+        var(--accent-color) 80%, 
+        transparent 100%),
+        0 0 20px rgba(255, 255, 255, 0.3); 
+    animation: header-glow 3s ease-in-out infinite alternate;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Поля ввода */
+.form-group input,
+.form-group textarea {
+    background: rgba(0, 20, 40, 0.7);
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 15px 20px;
+    color: var(--text-bright);
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(5px);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-dim);
+    opacity: 0.8;
+}
+
+/* Фокус эффекты */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-cyan);
+    box-shadow: 
+        0 0 25px rgba(0, 255, 255, 0.4),
+        inset 0 2px 4px rgba(0, 255, 255, 0.1);
+    background: rgba(0, 30, 60, 0.9);
+    transform: translateY(-2px);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-text {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin: 0;
+    opacity: 0.9;
+    animation: gradient-text 3s ease-in-out infinite;
+    text-shadow: var(--glow-soft) rgba(0, 255, 255, 0.3);
+}
+
+.form-text:hover {
+    color: var(--accent-color);
+    text-shadow: var(--text-shadow-medium);
+}
+
+        /* ========================================== */
+        /*  ЦИФРОВОЙ ОКТАЭДР */
+        /* ========================================== */
+        
+        .digital-octahedron {
+            position: relative;
+            width: 120px;
+            height: 140px;
+        }
+        
+        .octa-face {
+            position: absolute;
+            width: 420px;
+            height: 440px;
+            border-style: solid;
+        }
+        
+        .octa-face:nth-child(1) {
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-bottom: 40px solid rgba(0, 255, 255, 0.6);
+            animation: octa-pulse 2s ease-in-out infinite;
+        }
+        
+        .octa-face:nth-child(2) {
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 35px solid rgba(255, 0, 255, 0.6);
+            animation: octa-pulse 2s ease-in-out infinite 0.3s;
+        }
+        
+        .octa-face:nth-child(3) {
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-top: 40px solid rgba(0, 255, 128, 0.6);
+            animation: octa-pulse 2s ease-in-out infinite 0.6s;
+        }
+        
+        .octa-face:nth-child(4) {
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-top: 35px solid rgba(255, 255, 0, 0.6);
+            animation: octa-pulse 2s ease-in-out infinite 0.9s;
+        }
+        
+        .octa-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle,
+                rgba(255, 255, 255, 0.9) 0%,
+                rgba(0, 255, 255, 0.8) 50%,
+                rgba(255, 0, 255, 0.6) 100%);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 15px rgba(0, 255, 255, 0.8),
+                0 0 25px rgba(255, 0, 255, 0.5);
+            animation: core-spark 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes octa-pulse {
+            0%, 100% { opacity: 2; }
+            50% { opacity: 3; }
+        }
+        
+        @keyframes core-spark {
+            0%, 100% { transform: translate(-50%, -50%) scale(2); }
+            50% { transform: translate(-50%, -50%) scale(3); }
+        }
+        
+        /* ========================================== */
+        /* НЕЙРОННЫЙ КУБ */
+        /* ========================================== */
+        
+        .element {
+            animation: header-glow 3s ease-in-out infinite alternate; 
+        }
+
+        .neural-cube {
+            position: relative;
+            transform-style: preserve-3d;
+            animation: cube-rotate 6s linear infinite;
+        }
+        
+        @keyframes cube-rotate {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+        
+        .cube-face {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 2px solid #00ffff;
+            background: linear-gradient(45deg, 
+                rgba(0, 255, 255, 0.2),
+                rgba(255, 0, 255, 0.1));
+            box-shadow: 
+                0 0 15px rgba(0, 255, 255, 0.4),
+                inset 0 0 8px rgba(255, 255, 255, 0.1);
+        }
+        
+        .cube-face:nth-child(1) { transform: translateZ(50px); }
+        .cube-face:nth-child(2) { transform: rotateY(90deg) translateZ(50px); }
+        .cube-face:nth-child(3) { transform: rotateY(180deg) translateZ(50px); }
+        .cube-face:nth-child(4) { transform: rotateY(-90deg) translateZ(50px); }
+        .cube-face:nth-child(5) { transform: rotateX(90deg) translateZ(50px); }
+        .cube-face:nth-child(6) { transform: rotateX(-90deg) translateZ(50px); }
+
+        .spiral-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 5px solid;
+            border-radius: 50%;
+            animation: spiral-pulse 3s ease-in-out infinite;
+        }
+        
+        .spiral-ring:nth-child(1) {
+            width: 150px;
+            height: 150px;
+            border-color: #00ffff;
+            animation-delay: 0s;
+        }
+        
+        .spiral-ring:nth-child(2) {
+            width: 190px;
+            height: 190px;
+            border-color: #ff00ff;
+            animation-delay: 0.5s;
+        }
+        
+        .spiral-ring:nth-child(3) {
+            width: 230px;
+            height: 230px;
+            border-color: #00ff80;
+            animation-delay: 1s;
+        }
+        
+        .spiral-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle,
+                rgba(255, 255, 255, 0.9) 0%,
+                rgba(0, 255, 255, 0.8) 50%,
+                rgba(255, 0, 255, 0.6) 100%);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 20px rgba(0, 255, 255, 0.8),
+                0 0 30px rgba(255, 0, 255, 0.5);
+            animation: center-spark 2s ease-in-out infinite;
+        }
+        
+        @keyframes spiral-pulse {
+            0%, 100% { 
+                opacity: 0.4;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+        
+        @keyframes center-spark {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+/* ===============================================================
+   КНОПКА ОТПРАВИТЬ
+   =============================================================== */
+.submit-btn {
+    background: linear-gradient(45deg, 
+        rgba(0, 255, 255, 0.9) 0%,
+        rgba(255, 0, 255, 0.9) 50%,
+        rgba(0, 255, 0, 0.9) 100%);
+    border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 18px 40px;
+    color: var(--text-bright);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    margin-top: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Движущийся световой эффект на кнопке */
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        transparent 100%);
+    transition: left 0.6s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 15px 35px rgba(0, 255, 255, 0.4),
+        0 0 40px rgba(255, 0, 255, 0.3),
+        0 0 30px rgba(0, 255, 0, 0.3);
+    border-color: var(--primary-cyan);
+}
+
+.submit-btn:hover::before {
+    left: 100%;
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+    box-shadow: 
+        0 8px 20px rgba(0, 255, 255, 0.3),
+        inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ===============================================================
+   АДАПТИВНОСТЬ
+   =============================================================== */
+
+/* Планшеты */
+@media (max-width: 1024px) {
+    .brain-layout {
+        flex-direction: column;
+        gap: 50px;
+        text-align: center;
+    }
+    
+    .brain-neurons,
+    .neural-connections,
+    .interface-connection {
+        flex: none;
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    .neural-connections {
+        height: auto;
+        flex-direction: row;
+        justify-content: center;
+        gap: 40px;
+    }
+    
+}
+
+/* Мобильные */
+@media (max-width: 768px) {
+    .contacts-title {
+        font-size: 2.2rem;
+    }
+    
+    .brain-implant-section {
+        padding: 60px 0;
+    }
+    
+    .connection-panel {
+        padding: 30px 25px;
+    }
+    
+    .neuron {
+        padding: 25px 20px;
+    }
+    
+    .neuron-label {
+        font-size: 1.2rem;
+    }
+    
+    .contact-info {
+        font-size: 0.9rem;
+    }
+    
+    .submit-btn {
+        padding: 15px 30px;
+        font-size: 1rem;
+    }
+}
+
+
+
+/* ===============================================================
+   АНИМАЦИЯ ПОЯВЛЕНИЯ ЭЛЕМЕНТОВ
+   =============================================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================================================
+   УЛУЧШЕННЫЙ ГЛИЧ ЭФФЕКТ ДЛЯ NEURAL INTERFACE
+   ======================================================================== */
+
+/* Специальные стили для заголовка NEURAL INTERFACE */
+.neural-interface-title {
+    font-size: 2.2rem;                   /* Чуть больше для эффекта */
+    font-weight: 900;                   /* Жирнее */
+    color: var(--neon-cyan);
+    text-shadow: 
+        0 0 10px var(--neon-cyan),
+        0 0 20px var(--neon-cyan),
+        0 0 30px var(--neon-cyan);       /* Тройное свечение */
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    letter-spacing: 2px;                /* Более разреженные буквы */
+}
+
+.glitch-text {
+    position: relative;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan);
+    animation: glitch 3s infinite;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.glitch-text::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--neon-pink);
+    animation: glitch-1 3s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+    left: -2px;
+    text-shadow: 2px 0 var(--neon-purple);
+    animation: glitch-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-1 {
+    0%, 100% { clip-path: inset(40% 0 61% 0); }
+    20% { clip-path: inset(92% 0 1% 0); }
+    40% { clip-path: inset(43% 0 1% 0); }
+    60% { clip-path: inset(25% 0 58% 0); }
+    80% { clip-path: inset(54% 0 7% 0); }
+}
+
+@keyframes glitch-2 {
+    0%, 100% { clip-path: inset(25% 0 58% 0); }
+    20% { clip-path: inset(54% 0 7% 0); }
+    40% { clip-path: inset(58% 0 43% 0); }
+    60% { clip-path: inset(10% 0 59% 0); }
+    80% { clip-path: inset(78% 0 1% 0); }
+}
+
+/* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ */
+@media (max-width: 768px) {
+    .neural-interface-title {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+}
+
+@media (max-width: 480px) {
+    .neural-interface-title {
+        font-size: 1.5rem;
+        letter-spacing: 0.5px;
+    }
+}
+
+/* ===============================================================
+   ГОЛОГРАФИЧЕСКИЙ ФОН - НЕЙРОННАЯ СЕТЬ ДЛЯ BRAIN-LAYOUT
+   =============================================================== */
+
+/* Контейнер для голографического фона внутри brain-layout */
+.layout-hologram-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* Нейронные узлы в фоновом слое */
+.layout-hologram-node {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #00ff88;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #00ff88;
+    animation: layoutNodePulse 3s ease-in-out infinite;
+}
+
+@keyframes layoutNodePulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+        box-shadow: 0 0 15px #00ff88;
+    }
+    50% {
+        transform: scale(2);
+        opacity: 1;
+        box-shadow: 0 0 25px #00ff88;
+    }
+}
+
+/* Расположение узлов - покрывают весь brain-layout */
+.layout-hologram-node:nth-child(1) { top: 8%; left: 15%; animation-delay: 0s; }
+.layout-hologram-node:nth-child(2) { top: 15%; left: 35%; animation-delay: 0.3s; }
+.layout-hologram-node:nth-child(3) { top: 25%; left: 55%; animation-delay: 0.6s; }
+.layout-hologram-node:nth-child(4) { top: 35%; left: 75%; animation-delay: 0.9s; }
+.layout-hologram-node:nth-child(5) { top: 12%; left: 65%; animation-delay: 1.2s; }
+.layout-hologram-node:nth-child(6) { top: 20%; left: 85%; animation-delay: 1.5s; }
+.layout-hologram-node:nth-child(7) { top: 30%; left: 20%; animation-delay: 1.8s; }
+.layout-hologram-node:nth-child(8) { top: 40%; left: 40%; animation-delay: 2.1s; }
+.layout-hologram-node:nth-child(9) { top: 50%; left: 60%; animation-delay: 2.4s; }
+.layout-hologram-node:nth-child(10) { top: 60%; left: 80%; animation-delay: 2.7s; }
+.layout-hologram-node:nth-child(11) { top: 45%; left: 25%; animation-delay: 3s; }
+.layout-hologram-node:nth-child(12) { top: 55%; left: 45%; animation-delay: 3.3s; }
+.layout-hologram-node:nth-child(13) { top: 65%; left: 65%; animation-delay: 3.6s; }
+.layout-hologram-node:nth-child(14) { top: 75%; left: 85%; animation-delay: 3.9s; }
+.layout-hologram-node:nth-child(15) { top: 85%; left: 30%; animation-delay: 4.2s; }
+
+/* Соединения в фоновом слое */
+.layout-hologram-connection {
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #00ff88, transparent);
+    opacity: 0.6;
+    animation: layoutSignalTravel 4s linear infinite;
+}
+
+@keyframes layoutSignalTravel {
+    0% { transform: scaleX(0); opacity: 0; }
+    10% { transform: scaleX(1); opacity: 0.6; }
+    90% { transform: scaleX(1); opacity: 0.6; }
+    100% { transform: scaleX(0); opacity: 0; }
+}
+
+/* Расположение соединений */
+.layout-hologram-connection:nth-child(16) { top: 15%; left: 15%; width: 20%; animation-delay: 0s; }
+.layout-hologram-connection:nth-child(17) { top: 25%; left: 35%; width: 20%; animation-delay: 0.8s; }
+.layout-hologram-connection:nth-child(18) { top: 35%; left: 55%; width: 20%; animation-delay: 1.6s; }
+.layout-hologram-connection:nth-child(19) { top: 20%; left: 65%; width: 20%; animation-delay: 2.4s; }
+.layout-hologram-connection:nth-child(20) { top: 30%; left: 20%; width: 20%; animation-delay: 3.2s; }
+.layout-hologram-connection:nth-child(21) { top: 40%; left: 40%; width: 20%; animation-delay: 4s; }
+
+/* Пульсации в фоновом слое */
+.layout-hologram-pulse {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    border: 2px solid #00ff88;
+    animation: layoutPulseRipple 4s ease-out infinite;
+}
+
+@keyframes layoutPulseRipple {
+    0% { width: 0; height: 0; opacity: 0.8; }
+    100% { width: 500px; height: 500px; opacity: 0; }
+}
+
+.layout-hologram-pulse:nth-child(22) { top: 50%; left: 50%; animation-delay: 0s; }
+.layout-hologram-pulse:nth-child(23) { top: 70%; left: 30%; animation-delay: 2s; }
+
+/* Общая активность в фоновом слое */
+.layout-hologram-activity {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 70%);
+    animation: layoutActivityShift 6s ease-in-out infinite;
+}
+
+@keyframes layoutActivityShift {
+    0%, 100% { opacity: 0.2; transform: rotate(0deg); }
+    50% { opacity: 0.4; transform: rotate(180deg); }
+}
+
+/* Настройка z-index для элементов поверх фона */
+.brain-neurons,
+.interface-connection {
+    position: relative;
+    z-index: 10;
+}
+
+.neural-connections {
+    z-index: 10;
+}

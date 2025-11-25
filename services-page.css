@@ -1,0 +1,949 @@
+/* ===============================================================
+   СТИЛИ ДЛЯ СТРАНИЦЫ УСЛУГ - SERVICES PAGE CSS
+   ===============================================================
+   Простые стили: блок во всю ширину, только высоту регулируем
+   АДАПТИВНОСТЬ: Mobile-First подход
+   =============================================================== */
+
+/* === ЦЕНТРИРОВАНИЕ ЗАГОЛОВКОВ В СЕКЦИИ УСЛУГ === */
+.services-header-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.services-header-wrapper h1,
+.services-header-wrapper p {
+    margin: 0;
+    padding: 5px 0;
+}
+
+/* === ГЕРО СЕКЦИЯ СТРАНИЦЫ УСЛУГ (БАЗОВЫЕ СТИЛИ - МОБИЛЬНЫЕ) === */
+body.page-services .hero-section {
+    height: 280px;                    /* Базовый размер для мобильных*/
+    text-align: center;
+    background: rgba(0, 255, 255, 0.03);
+}
+
+body.page-services .hero-title,
+body.page-services .section-title {
+    color: var(--primary-color, #00ffff);
+    font-size: 1.8rem;                /* Умеренный размер для мобильных*/
+    font-weight: bold;
+    margin-bottom: 15px;              /* Меньший отступ для мобильных*/
+}
+
+body.page-services .hero-subtitle {
+    color: var(--text-color, #e0e0e0);
+    font-size: 1rem;                  /* Умеренный размер для мобильных*/
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* === АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ (768px+) === */
+@media (min-width: 768px) {
+    body.page-services .hero-section {
+        height: 400px;                /* Увеличиваем высоту для планшетов*/
+    }
+    
+    body.page-services .hero-title,
+    body.page-services .section-title {
+        font-size: 2.2rem;            /* Увеличиваем заголовок*/
+        margin-bottom: 18px;          /* Немного увеличиваем отступ*/
+    }
+    
+    body.page-services .hero-subtitle {
+        font-size: 1.1rem;            /* Увеличиваем подзаголовок*/
+    }
+}
+
+/* === АДАПТИВНОСТЬ ДЛЯ ДЕСКТОПОВ (1024px+) === */
+@media (min-width: 1024px) {
+    body.page-services .hero-section {
+        height: 500px;                /* Полный размер для десктопов*/
+    }
+    
+    body.page-services .hero-title,
+    body.page-services .section-title {
+        font-size: 2.5rem;            /* Полный размер для десктопов*/
+        margin-bottom: 20px;          /* Полный отступ для десктопов*/
+    }
+    
+    body.page-services .hero-subtitle {
+        font-size: 1.2rem;            /* Полный размер для десктопов*/
+    }
+}
+
+/* ========================================================================
+   СЕКЦИЯ УСЛУГ
+   ======================================================================== */
+
+.service-hero {
+    position: relative;
+    padding: var(--spacing-xxl) 0;
+    background: var(--darker-bg);
+}
+
+.service-title {
+    font-weight: 900;
+    margin-bottom: var(--spacing-md);
+    text-shadow: 0 0 20px var(--primary-color);
+}
+
+.services-subtitle {
+    font-size: 1.5rem;
+    opacity: 0.9;
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(90deg,
+    var(--secondary-color),
+    var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+}
+
+.service-card {
+    background: var(--dark-bg);
+    border: 2px solid var(--primary-color);
+    border-radius: 15px;
+    padding: var(--spacing-xl);
+    text-align: center;
+    transition: var(--transition-normal);
+    position: relative;
+    margin-bottom: var(--spacing-xl);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card.featured {
+    border-color: var(--secondary-color);
+    transform: scale(1.05);
+    z-index: 2;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+}
+
+.service-card.featured:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 0, 255, 0.3);
+}
+
+.service-badge {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: var(--secondary-color);
+    color: var(--light-text);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--spacing-md);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--darker-bg);
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--light-text);
+}
+
+.service-card p {
+    color: var(--gray-text);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--spacing-lg) 0;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.service-features li {
+    color: var(--accent-color);
+}
+
+.service-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.service-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === НЕОНОВЫЕ КНОПКИ "ЗАКАЗАТЬ" === */
+.holographic-service-card .btn-order {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 2px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: transparent;
+    border-radius: 8px;
+    box-shadow: 
+        0 0 15px var(--neon-cyan),
+        inset 0 0 10px rgba(0, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    margin: 15px auto 0;
+    display: block;
+    width: fit-content;
+    animation: btn-glow 3s ease-in-out infinite alternate;
+}
+
+.holographic-service-card .btn-order:hover {
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow: 
+        0 0 25px var(--neon-cyan),
+        inset 0 0 20px rgba(0, 255, 255, 0.2);
+    color: var(--neon-green);
+    transform: translateY(-2px);
+    animation: btn-glow-intense 2s ease-in-out infinite alternate;
+}
+
+/* АНИМАЦИЯ МЕРЦАНИЯ В СТАТИЧНОМ СОСТОЯНИИ */
+@keyframes btn-glow {
+    0% { 
+        box-shadow: 0 0 10px var(--neon-cyan);
+        opacity: 0.9;
+    }
+    50% { 
+        box-shadow: 0 0 20px var(--neon-cyan);
+        opacity: 1;
+    }
+    100% { 
+        box-shadow: 0 0 10px var(--neon-cyan);
+        opacity: 0.9;
+    }
+}
+
+/* УСИЛЕННОЕ МЕРЦАНИЕ ПРИ HOVER */
+@keyframes btn-glow-intense {
+    0% { 
+        box-shadow: 0 0 15px var(--neon-cyan);
+        opacity: 0.9;
+    }
+    50% { 
+        box-shadow: 0 0 30px var(--neon-cyan);
+        opacity: 1;
+    }
+    100% { 
+        box-shadow: 0 0 15px var(--neon-cyan);
+        opacity: 0.9;
+    }
+}
+
+/* ========================================================================
+   АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ
+   ======================================================================== */
+
+    /* Мобильная адаптация для контактной формы */
+    .contact-form .form-row {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .contact-form .form-row .form-group {
+        width: 100%;
+    }
+
+@media (max-width: 991px) {
+    .about-content {
+        padding-right: 0;
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    .contact-info {
+        padding-right: 0;
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    .service-card.featured {
+        transform: none;
+        margin-bottom: var(--spacing-xl);
+    }
+}
+
+@media (max-width: 767px) {
+    .hero-stats {
+        gap: var(--spacing-md);
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Мобильная адаптация для калькулятора */
+    .calculator-form .form-row {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    /* Мобильная адаптация для контактной формы */
+    .contact-form .form-row {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    /* На мобильных все поля в контактной форме занимают 100% */
+    .contact-form .form-row .form-group:first-child,
+    .contact-form .form-row .form-group:last-child {
+        flex: 1 !important;
+        max-width: 100% !important;
+    }
+    
+    .calculator-actions {
+        flex-direction: column;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-icon {
+        align-self: center;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-card {
+        padding: var(--spacing-lg);
+    }
+    
+    .calculator-form {
+        padding-right: 0;
+    }
+    
+    .contact-form {
+        padding: var(--spacing-lg);
+    }
+}
+
+/* ========================================================================
+   ГОЛОГРАФИЧЕСКИЕ ЭФФЕКТЫ - СЕКЦИЯ УСЛУГ
+   ======================================================================== */
+
+.glitch-text {
+    position: relative;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan);
+    animation: glitch 3s infinite;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.glitch-text::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--neon-pink);
+    animation: glitch-1 3s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+    left: -2px;
+    text-shadow: 2px 0 var(--neon-purple);
+    animation: glitch-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-1 {
+    0%, 100% { clip-path: inset(40% 0 61% 0); }
+    20% { clip-path: inset(92% 0 1% 0); }
+    40% { clip-path: inset(43% 0 1% 0); }
+    60% { clip-path: inset(25% 0 58% 0); }
+    80% { clip-path: inset(54% 0 7% 0); }
+}
+
+@keyframes glitch-2 {
+    0%, 100% { clip-path: inset(25% 0 58% 0); }
+    20% { clip-path: inset(54% 0 7% 0); }
+    40% { clip-path: inset(58% 0 43% 0); }
+    60% { clip-path: inset(10% 0 59% 0); }
+    80% { clip-path: inset(78% 0 1% 0); }
+}
+
+/* Голографические карточки услуг */
+.service-cards-container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center; /* Центрируем по горизонтали */
+    flex-wrap: wrap; /* Переносим на новую строку если нужно */
+    margin-left: -15px; /* Компенсируем Bootstrap padding */
+    margin-right: -15px;
+}
+
+.service-cards-container > div {
+    padding-left: 20px;  /* Расстояние слева */
+    padding-right: 20px; /* Расстояние справа */
+    margin-bottom: 30px; /* Расстояние снизу */
+}
+
+.holographic-service-card {
+    position: relative;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Все карточки одной высоты */
+    max-height: 1000px; /* Максимальная высота */
+    border-color: var(--primary-color);
+        box-shadow: 0 3px 30px linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary-color) 20%, 
+        var(--secondary-color) 50%, 
+        var(--accent-color) 80%, 
+        transparent 100%),
+        0 0 20px rgba(255, 255, 255, 0.3); 
+    animation: header-glow 3s ease-in-out infinite alternate;
+}
+
+/* Внешний glow эффект */
+.holographic-service-card::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, 
+        var(--accent-color), 
+        var(--dark-bg), 
+        var(--secondary-color), 
+        var(--dark-bg), 
+        var(--primary-color));
+    z-index: -1;
+    opacity: 0.4;
+    animation: header-glow 3s ease-in-out infinite alternate;
+}
+
+.holographic-service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 20px var(--primary-color),
+        inset 0 0 20px rgba(0, 255, 255, 0.1);
+    border-color: var(--primary-color);
+}
+
+.holographic-service-card:hover::before {
+    left: 100%;
+}
+
+.holographic-service-card.featured {
+    position: relative;
+    z-index: 1;
+    border-color: var(--secondary-color);
+        box-shadow: 0 3px 30px linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary-color) 20%, 
+        var(--secondary-color) 50%, 
+        var(--accent-color) 80%, 
+        transparent 100%),
+        0 0 20px rgba(255, 255, 255, 0.3); 
+    animation: header-glow 3s ease-in-out infinite alternate;
+}
+
+.holographic-service-card.featured:hover {
+    background: var(--dark-bg);
+    transform: translateY(-10px);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 20px var(--secondary-color),
+        inset 0 0 20px rgba(0, 255, 255, 0.1);
+    border-color: var(--secondary-color);
+}
+
+/* Внешний glow эффект */
+.holographic-service-card.featured::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, 
+        var(--primary-color), 
+        var(--dark-bg), 
+        var(--secondary-color), 
+        var(--dark-bg), 
+        var(--accent-color), 
+        var(--dark-bg), 
+        var(--primary-color));
+    z-index: -1;
+    opacity: 0.4;
+    animation: panel-glow 4s linear infinite;
+}
+
+@keyframes panel-glow {
+    0% { filter: blur(12px) hue-rotate(0deg); }
+    100% { filter: blur(12px) hue-rotate(360deg); }
+}
+
+.service-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
+    color: var(--neon-yellow);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Иконки сервисов */
+.service-icon {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    position: relative;
+}
+
+.service-icon i {
+    font-size: 3rem;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* Списки особенностей */
+.service-features {
+    font-size: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-md) 0;
+}
+
+.service-features::before {
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.service-features li {
+    padding: var(--spacing-xs) 0;
+    background: linear-gradient(60deg, var(--neon-blue), var(--neon-green));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    padding-left: var(--spacing-md);
+}
+
+/* Цены */
+.service-price {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--neon-yellow);
+    text-shadow: 0 0 10px var(--neon-yellow);
+    margin: var(--spacing-md) 0;
+}
+
+/* Интегрированные калькуляторы */
+.integrated-calculator {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.integrated-calculator h4 {
+    color: var(--neon-cyan);
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.calc-form {
+    margin-bottom: var(--spacing-sm);
+}
+
+.calc-group {
+    margin-bottom: var(--spacing-sm);
+}
+
+.calc-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.9rem;
+    background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.calc-group input[type="range"] {
+    width: 100%;
+    margin: var(--spacing-xs) 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.calc-group input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: var(--neon-cyan);
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.calc-group input[type="range"]::-moz-range-thumb {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: var(--neon-cyan);
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--neon-cyan);
+    border: none;
+}
+
+.calc-group select {
+    width: 100%;
+    padding: var(--spacing-xs);
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+/* Чекбоксы */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--card-checkbox-text);
+    position: relative;
+    padding-left: var(--spacing-lg);
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.checkbox-label input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 20px;
+    width: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.checkbox-label:hover .checkmark {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 5px var(--neon-cyan);
+}
+
+.checkbox-label input[type="checkbox"]:checked ~ .checkmark {
+    background: var(--neon-cyan);
+    box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* Результаты калькулятора */
+.calc-result {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--neon-cyan);
+    border-radius: 5px;
+    margin-top: var(--spacing-sm);
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-yellow));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.calc-price span {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--neon-yellow);
+    text-shadow: 0 0 10px var(--neon-yellow);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .glitch-text {
+        font-size: 2rem;
+    }
+    
+    .holographic-service-card {
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .integrated-calculator {
+        margin: var(--spacing-sm) 0;
+    }
+    
+    .service-icon i {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .glitch-text {
+        font-size: 1.5rem;
+    }
+    
+    .holographic-service-card {
+        padding: var(--spacing-md);
+    }
+    
+    .integrated-calculator h4 {
+        font-size: 1rem;
+    }
+    
+    .calc-group select,
+    .calc-group input[type="range"] {
+        font-size: 0.8rem;
+    }
+}
+
+/* Эффекты при наведении для всех карточек */
+.service-card,
+.portfolio-card,
+.package-card,
+.testimonial-card,
+.stat-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before,
+.portfolio-card::before,
+.package-card::before,
+.testimonial-card::before,
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.1), 
+        transparent);
+    transition: var(--transition-slow);
+    z-index: 1;
+}
+
+.service-card:hover::before,
+.portfolio-card:hover::before,
+.package-card:hover::before,
+.testimonial-card:hover::before,
+.stat-card:hover::before {
+    left: 100%;
+}
+
+.typewriter-title {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    position: relative;
+    z-index: 10;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 4rem;
+    font-weight: bold;
+    background: linear-gradient(90deg,
+     var(--primary-color), 
+     var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.typewriter-title::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0, 255, 255, 0.1) 0%,
+        transparent 70%
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Cursor для печатной машинки */
+.typewriter-cursor {
+    color: var(--neon-cyan);
+    animation: cursorBlink 1s infinite;
+    text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* Специальный класс для плавной печати без конфликтов */
+.typewriter-stable {
+    animation: none !important; /* Отключаем все анимации во время печати */
+    transition: all 0.3s ease; /* Плавные переходы */
+}
+
+/* Возврат голографических эффектов после завершения печати */
+.typewriter-title.active {
+    animation: typewriterGlow 4s ease-in-out infinite;
+}
+
+/* Мягкая анимация свечения вместо агрессивного глитча */
+@keyframes typewriterGlow {
+    0%, 100% { 
+        text-shadow: 
+            0 0 5px var(--neon-cyan), 
+            0 0 10px var(--neon-cyan), 
+            0 0 15px var(--neon-cyan);
+    }
+    50% { 
+        text-shadow: 
+            0 0 10px var(--neon-cyan), 
+            0 0 20px var(--neon-cyan), 
+            0 0 30px var(--neon-cyan),
+            0 0 40px var(--neon-cyan);
+    }
+}
+
+/* Космическое свечение */
+@keyframes cosmicGlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* ========================================================================
+   ИНТЕНСИВНОЕ СВЕЧЕНИЕ ДЛЯ ПАУЗ
+   ======================================================================== */
+
+/* ИНТЕНСИВНОЕ СВЕЧЕНИЕ для главной страницы */
+.hero-title-intense {
+    animation: typewriterGlow 4s ease-in-out infinite, cosmicGlow 3s ease-in-out infinite;
+}
+
+/* ИНТЕНСИВНОЕ СВЕЧЕНИЕ для портфолио */
+.portfolio-title-intense {
+    animation: typewriterGlow 4s ease-in-out infinite, cosmicGlow 3s ease-in-out infinite;
+}
+
+/* ИНТЕНСИВНОЕ СВЕЧЕНИЕ для услуг */
+.services-title-intense {
+    animation: typewriterGlow 4s ease-in-out infinite, cosmicGlow 3s ease-in-out infinite;
+}
+
+/* Responsive для гибридного заголовка */
+@media (max-width: 768px) {
+    .typewriter--title {
+        font-size: 2rem;
+    }
+    
+    .hero-title,
+    .portfolio-title {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        padding: 1rem 2rem;
+    }
+    
+    .hero-title,
+    .portfolio-title {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .typewriter-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Contacts Title Intense Effect */
+.contacts-title-intense {
+    animation: typewriterGlow 4s ease-in-out infinite, cosmicGlow 3s ease-in-out infinite;
+}

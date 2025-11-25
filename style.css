@@ -1,0 +1,1105 @@
+/*
+Theme Name: My Portfolio 
+Description: Версия для полного погружения и обучения веб-разработке
+Version: 1.0.0
+Author: NewTON
+Tags: portfolio, responsive, multi-page
+Text Domain: my-portfolio
+
+*//* ========================================================================
+   CSS ПЕРЕМЕННЫЕ И БАЗОВЫЕ НАСТРОЙКИ
+   ======================================================================== */
+
+:root {
+    /* ========================================================================
+       ОСНОВНЫЕ ЦВЕТА В ТЕХНО СТИЛЕ
+       ======================================================================== */
+    --primary-color: #00ffff;      /* Cyan - основной цвет */
+    --secondary-color: #ff00ff;    /* Magenta - вторичный цвет */
+    --accent-color: #00ff00;       /* Green - акцентный цвет */
+    --dark-bg: #0a0a0a;           /* Темный фон */
+    --darker-bg: #000000;         /* Еще темнее */
+    --light-text: #ffffff;        /* Белый текст */
+    --gray-text: #b0b0b0;         /* Серый текст */
+    
+    /* ========================================================================
+       НЕОНОВЫЕ ЦВЕТА ДЛЯ ГОЛОГРАФИЧЕСКИХ ЭФФЕКТОВ
+       ======================================================================== */
+    --neon-cyan: #00ffff;         /* Ярко-голубой неон */
+    --neon-purple: #ff00ff;       /* Ярко-фиолетовый неон */
+    --neon-pink: #ff1493;         /* Ярко-розовый неон */
+    --neon-green: #00ff00;        /* Ярко-зеленый неон */
+    --neon-yellow: #ffff00;       /* Ярко-желтый неон */
+    --neon-orange: #ff4500;       /* Оранжевый неон */
+    --neon-blue: #0080ff;         /* Синий неон */
+    
+    /* ========================================================================
+       НАСТРОЙКИ СВЕЧЕНИЯ (УДОБНО МАСШТАБИРОВАТЬ)
+       ======================================================================== */
+    --glow-small: 8px;            /* Малый радиус свечения */
+    --glow-medium: 16px;          /* Средний радиус свечения */
+    --glow-large: 24px;           /* Большой радиус свечения */
+    --glow-intense: 32px;         /* Интенсивное свечение */
+    --glow-multiplier: 1;         /* Множитель для быстрой настройки */
+    
+    /* Адаптивные настройки свечения */
+    --glow-sm: clamp(5px, 1vw, var(--glow-small));
+    --glow-md: clamp(8px, 1.5vw, var(--glow-medium));
+    --glow-lg: clamp(12px, 2vw, var(--glow-large));
+    --glow-xl: clamp(16px, 3vw, var(--glow-intense));
+    
+    /* ========================================================================
+       ГОЛОГРАФИЧЕСКИЕ ФОНЫ И ЭФФЕКТЫ
+       ======================================================================== */
+    --holographic-bg: rgba(10, 10, 30, 0.8);     /* Основной фон голограммы */
+    --glass-bg: rgba(255, 255, 255, 0.05);       /* Полупрозрачный фон */
+    --border-color: rgba(0, 255, 255, 0.3);      /* Цвет границ */
+    
+    /* Прозрачности для фоновых эффектов */
+    --bg-opacity-subtle: 0.03;    /* Очень слабая прозрачность */
+    --bg-opacity-light: 0.05;     /* Легкая прозрачность */
+    --bg-opacity-medium: 0.1;     /* Средняя прозрачность */
+    --bg-opacity-strong: 0.15;    /* Сильная прозрачность */
+    
+    /* ========================================================================
+       СИСТЕМА КОНТЕЙНЕРОВ
+       ======================================================================== */
+    --container-xs: 100%;          /* Полная ширина на мобильных */
+    --container-sm: 540px;         /* Маленькие контейнеры */
+    --container-md: 720px;         /* Средние контейнеры */
+    --container-lg: 960px;         /* Большие контейнеры */
+    --container-xl: 1140px;        /* Очень большие */
+    --container-xxl: 1320px;       /* Максимальный размер */
+    
+    /* ========================================================================
+       ОТСТУПЫ И ИНТЕРВАЛЫ
+       ======================================================================== */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* ========================================================================
+       ТИПОГРАФИКА
+       ======================================================================== */
+    --font-main: 'Orbitron', monospace;
+    --font-size-base: 16px;
+    --line-height-base: 1.6;
+
+    /* ========================================================================
+       ПЕРЕХОДЫ И АНИМАЦИИ
+       ======================================================================== */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* ========================================================================
+       ГОТОВЫЕ ГРАДИЕНТЫ
+       ======================================================================== */
+    --gradient-tech: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    --gradient-neon: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple), var(--neon-pink));
+    --gradient-purple-cyan: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan));
+    --gradient-cyan-pink: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+    --gradient-glow: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+    
+    /* Сканирующие линии */
+    --scan-line-cyan: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+    --scan-line-multi: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple), var(--neon-pink));
+    
+    /* Радиальные градиенты для фона */
+    --radial-glow-cyan: radial-gradient(ellipse at center, rgba(0, 255, 255, var(--bg-opacity-subtle)) 0%, transparent 70%);
+    --radial-glow-purple: radial-gradient(ellipse at center, rgba(255, 0, 255, var(--bg-opacity-subtle)) 0%, transparent 70%);
+    --radial-glow-pink: radial-gradient(ellipse at center, rgba(255, 20, 147, var(--bg-opacity-subtle)) 0%, transparent 70%);
+    
+/* ========================================================================
+    УНИВЕРСАЛЬНЫЕ ПЕРЕМЕННЫЕ ДЛЯ БЫСТРОЙ НАСТРОЙКИ
+   ======================================================================== */
+/* Готовые комбинации текстовых теней */
+    --text-shadow-low: 0 0 var(--glow-sm) currentColor;
+    --text-shadow-medium: 0 0 var(--glow-sm) currentColor, 0 0 var(--glow-md) currentColor;
+    --text-shadow-high: 0 0 var(--glow-sm) currentColor, 0 0 var(--glow-md) currentColor, 0 0 var(--glow-lg) currentColor;
+    --text-shadow-intense: 0 0 var(--glow-sm) currentColor, 0 0 var(--glow-md) currentColor, 0 0 var(--glow-lg) currentColor, 0 0 var(--glow-xl) currentColor;
+    
+/* Тени блоков */
+    --box-shadow-glow: 0 0 var(--glow-md) currentColor, inset 0 0 var(--glow-sm) currentColor;
+    --box-shadow-intense: 0 0 var(--glow-lg) currentColor, 0 0 var(--glow-xl) currentColor, inset 0 0 var(--glow-md) currentColor;
+
+/* Z-индекс переменные - для слоёв */
+    --z-bg: -1;
+    --z-content: 1;
+    --z-overlay: 100;
+    --z-modal: 1000;
+    --z-tooltip: 1100;
+
+/* Breakpoints переменные */
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-xxl: 1400px;
+
+/* Границы и радиусы */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 16px;
+    --border-width-thin: 1px;
+    --border-width-thick: 2px;
+}
+
+/* ========================================================================
+   СБРОС СТИЛЕЙ И БАЗОВЫЕ НАСТРОЙКИ
+   ======================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    color: var(--light-text);
+    background: var(--dark-bg);
+}
+
+/* ========================================================================
+   СИСТЕМА КОНТЕЙНЕРОВ 
+   ======================================================================== */
+
+/* Базовый контейнер - занимает всю ширину на мобильных */
+.container {
+    width: 100%;
+    max-width: var(--container-xs);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+/* На планшетах увеличиваем максимальную ширину */
+@media (min-width: 576px) {
+    .container {
+        max-width: var(--container-sm);
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: var(--container-md);
+        padding: 0 var(--spacing-md);
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: var(--container-lg);
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: var(--container-xl);
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: var(--container-xxl);
+    }
+}
+
+/* Контейнеры разных размеров для разных задач */
+.container-sm {
+    max-width: var(--container-sm);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+.container-md {
+    max-width: var(--container-md);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.container-lg {
+    max-width: var(--container-lg);
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.container-xl {
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+}
+
+/* Флюидный контейнер - всегда 100% ширины */
+.container-fluid {
+    width: 100%;
+    padding: 0 var(--spacing-sm);
+}
+
+/* ========================================================================
+   СЕТКА (GRID) СИСТЕМА
+   ======================================================================== */
+
+/* 
+   Grid система для создания гибких макетов.
+   Чтобы легко создавать сложные макеты без фиксированных размеров.
+*/
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 calc(var(--spacing-sm) / -2);
+}
+
+.row-sm {
+    margin: 0 calc(var(--spacing-xs) / -2);
+}
+
+.row-lg {
+    margin: 0 calc(var(--spacing-lg) / -2);
+}
+
+/* Колонки с автоматическим размером */
+.col {
+    flex: 1;
+    padding: 0 calc(var(--spacing-sm) / 2);
+}
+
+.col-sm {
+    padding: 0 calc(var(--spacing-xs) / 2);
+}
+
+.col-lg {
+    padding: 0 calc(var(--spacing-lg) / 2);
+}
+
+/* Фиксированные колонки */
+.col-12 { width: 100%; }
+.col-11 { width: 91.666667%; }
+.col-10 { width: 83.333333%; }
+.col-9  { width: 75%; }
+.col-8  { width: 66.666667%; }
+.col-7  { width: 58.333333%; }
+.col-6  { width: 50%; }
+.col-5  { width: 41.666667%; }
+.col-4  { width: 33.333333%; }
+.col-3  { width: 25%; }
+.col-2  { width: 16.666667%; }
+.col-1  { width: 8.333333%; }
+
+/* Адаптивные колонки */
+@media (min-width: 576px) {
+    .col-sm-12 { width: 100%; }
+    .col-sm-6 { width: 50%; }
+    .col-sm-4 { width: 33.333333%; }
+    .col-sm-3 { width: 25%; }
+}
+
+@media (min-width: 768px) {
+    .col-md-12 { width: 100%; }
+    .col-md-6 { width: 50%; }
+    .col-md-4 { width: 33.333333%; }
+    .col-md-3 { width: 25%; }
+}
+
+/* ========================================================================
+   УТИЛИТЫ И ПОМОЩНИКИ
+   ======================================================================== */
+
+/* Отступы */
+.m-0 { margin: 0; }
+.m-sm { margin: var(--spacing-sm); }
+.m-md { margin: var(--spacing-md); }
+.m-lg { margin: var(--spacing-lg); }
+
+.p-0 { padding: 0; }
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+
+/* Отступы сверху/снизу */
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+/* Выравнивание текста */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* Цвета текста */
+.text-primary { color: var(--primary-color); }
+.text-secondary { color: var(--secondary-color); }
+.text-accent { color: var(--accent-color); }
+.text-gray { color: var(--gray-text); }
+.text-light { color: var(--light-text); }
+
+/* Фоновые цвета */
+.bg-dark { background-color: var(--dark-bg); }
+.bg-darker { background-color: var(--darker-bg); }
+
+/* Видимость */
+.d-none { display: none; }
+.d-block { display: block; }
+.d-flex { display: flex; }
+.d-grid { display: grid; }
+
+/* Адаптивная видимость */
+@media (max-width: 767px) {
+    .d-md-none { display: none; }
+    .d-md-block { display: block; }
+}
+
+@media (min-width: 768px) {
+    .d-md-flex { display: flex; }
+    .d-md-grid { display: grid; }
+}
+
+/* ========================================================================
+   ТИПОГРАФИКА
+   ======================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+    color: var(--light-text);
+    font-size: clamp(0.5rem, 2vw, 1rem);
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+h3 {
+    color: var(--primary-color);
+    font-size: clamp(1.25rem, 3vw, 2rem);
+}
+
+h4 {
+    color: var(--primary-color);
+    font-size: clamp(0.5rem, 2vw, 1rem);
+}
+
+h4:hover {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px currentColor;
+}
+
+h6 {
+    margin-bottom: var(--spacing-md);
+    color: var(--accent-color);
+}
+
+h6:hover {
+    color: var(--secondary-color);
+    text-shadow: 0 0 10px currentColor;
+}
+
+p {
+    margin-bottom: var(--spacing-md);
+    color: var(--secondary-color);
+}
+
+p:hover {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px currentColor;
+}
+
+/* Ссылки */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+a:hover {
+    color: var(--secondary-color);
+    text-shadow: 0 0 10px currentColor;
+}
+
+/* ========================================================================
+   СТИЛИ ДЛЯ ШАПКИ САЙТА (HEADER)
+   ======================================================================== */
+
+.site-header {
+    background: var(--gradient-tech);
+    background-color: var(--dark-bg);
+    box-shadow: 0 3px 30px linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary-color) 20%, 
+        var(--secondary-color) 50%, 
+        var(--accent-color) 80%, 
+        transparent 100%),
+        0 0 20px rgba(255, 255, 255, 0.3);
+    animation: header-glow 3s ease-in-out infinite alternate;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+/* Контейнер для шапки */
+.site-header .container {
+    padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+}
+
+/* Декоративная линия под шапкой */
+.header-decoration {
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary-color) 20%, 
+        var(--secondary-color) 50%, 
+        var(--accent-color) 80%, 
+        transparent 100%);
+    animation: header-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes header-glow {
+    0% { 
+        opacity: 0.8;
+        filter: drop-shadow(0 0 10px var(--primary-color));
+    }
+    50% { 
+        opacity: 1;
+        filter: drop-shadow(0 0 20px var(--secondary-color));
+    }
+    100% { 
+        opacity: 0.8;
+        filter: drop-shadow(0 0 15px var(--accent-color));
+    }
+}
+
+/* Брендинг (логотип + название) */
+.site-branding {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.site-title a:hover {
+    background: var(--gradient-purple-cyan);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.site-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.site-title a {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+    transition: var(--transition-normal);
+    position: relative;
+}
+
+.site-title a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transition: width 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.site-title a:hover::after {
+    width: 100%;
+}
+
+/* Пульсирующее свечение при ховере */
+.site-title a:hover {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+.site-description {
+    font-size: 0.9rem;
+    color: var(--gray-text);
+    margin: 0;
+    font-weight: 300;
+}
+
+.site-tagline {
+    font-size: 0.7rem;
+}
+
+/* Стили для подписи/тегалайна */
+.site-tagline {
+    font-size: 0.8rem;
+    font-family: 'Orbitron', monospace;
+    color: rgba(0, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 2px 0 0 0;
+    font-weight: 400;
+    opacity: 0.7;
+    transition: var(--transition-normal);
+}
+
+.site-tagline:hover {
+    color: var(--primary-color);
+    opacity: 1;
+    text-shadow: 0 0 8px currentColor;
+}
+
+/* Навигационное меню */
+.main-navigation {
+    position: relative;
+}
+
+/* Основное меню - НОВАЯ СТРУКТУРА БЕЗ UL */
+.nav-menu {
+    display: flex;
+    gap: var(--spacing-lg);
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-menu a, .nav-link {
+    height: auto;
+    position: relative;
+    z-index: 10;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary-color) 20%, 
+        var(--secondary-color) 50%, 
+        var(--accent-color) 80%, 
+        transparent 100%);
+    animation: header-glow 3s ease-in-out infinite alternate;
+    
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 5px;
+    border: 1px solid rgba(78, 205, 196, 0.3);
+    
+    /* Основной цвет текста */
+    color: var(--neon-cyan);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: var(--neon-cyan);
+    
+    /* Градиент через множественные тени */
+    text-shadow: 
+        0 0 10px #ff0080,
+        0 0 20px #ff0080,
+        0 0 30px #00ffff,
+        0 0 40px #00ffff;
+    
+    transition: all 0.3s ease;
+}
+
+.nav-menu a:hover, .nav-link:hover {
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 20px rgba(78, 205, 196, 0.4),
+        inset 0 0 20px rgba(78, 205, 196, 0.2);
+    
+    /* При hover - сплошной цвет */
+    color: var(--neon-cyan);
+    text-shadow: 0 0 15px var(--neon-cyan);
+
+        background-clip: text;
+    -webkit-background-clip: text;
+
+}
+
+.nav-menu a.active,
+.nav-menu a.current-menu-item,
+.nav-link.active,
+.nav-link.current-menu-item {
+    color: var(--primary-color);
+    background: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    text-shadow: 0 0 10px currentColor;
+}
+
+/* СТИЛИ ДЛЯ МОБИЛЬНОЙ КНОПКИ МЕНЮ (без создания белого пикселя) */
+.mobile-menu-toggle {
+    display: none; /* Скрыта на десктопе */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: auto;
+    position: relative;
+    width: 24px;
+    height: 20px;
+}
+
+/* МОБИЛЬНОЕ МЕНЮ - показываем бургер-кнопку на мобильных */
+@media (max-width: 767px) {
+    .mobile-menu-toggle {
+        display: block; /* Показываем бургер-кнопку на мобильных */
+    }
+    
+    /* Скрываем обычное меню на мобильных */
+    .nav-menu {
+        display: none;
+    }
+    
+    .nav-menu.active {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--dark-bg);
+        border: 1px solid var(--primary-color);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+    
+    .nav-menu.active ul {
+        flex-direction: column;
+        padding: 20px 0;
+    }
+    
+    .nav-menu.active li {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .nav-menu.active a {
+        display: block;
+        padding: 15px 20px;
+        color: var(--light-text);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: var(--transition-normal);
+    }
+    
+    .nav-menu.active a:hover {
+        background: var(--primary-color);
+        color: var(--dark-bg);
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Блокируем скролл страницы когда меню открыто */
+    body.menu-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+    }
+}
+
+/* СТИЛИ ДЛЯ НАВИГАЦИИ НА ДЕСКТОПЕ */
+@media (min-width: 768px) {
+    .nav-menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .nav-menu li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .nav-menu a {
+        color: var(--light-text);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition-normal);
+        position: relative;
+    }
+    
+    .nav-menu a:hover {
+        color: var(--primary-color);
+        text-shadow: 0 0 10px var(--primary-color);
+    }
+    
+    .nav-menu a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary-color);
+        transition: width 0.3s ease;
+    }
+    
+    .nav-menu a:hover::after {
+        width: 100%;
+    }
+}
+
+.mobile-menu-toggle::before,
+.mobile-menu-toggle::after,
+.mobile-menu-toggle .hamburger-line {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--light-text);
+    transition: var(--transition-normal);
+}
+
+.mobile-menu-toggle::before { top: 0; }
+.mobile-menu-toggle::after { bottom: 0; }
+.mobile-menu-toggle .hamburger-line { top: 50%; transform: translateY(-50%); }
+
+/* Анимация гамбургера при открытии */
+.mobile-menu-toggle[aria-expanded="true"]::before {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.mobile-menu-toggle[aria-expanded="true"]::after {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line {
+    opacity: 0;
+}
+
+/* Эффект hover для кнопки */
+.mobile-menu-toggle:hover::before,
+.mobile-menu-toggle:hover::after,
+.mobile-menu-toggle:hover .hamburger-line {
+    background: var(--primary-color);
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+/* Эффект печатной машинки для текста в меню */
+.nav-menu a:hover {
+    animation: text-glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes text-glow {
+    from {
+        text-shadow: 0 0 5px currentColor;
+    }
+    to {
+        text-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
+    }
+}
+
+/* Пульсация для активного пункта меню */
+.nav-menu a.active {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* ========================================================================
+   СТИЛИ ДЛЯ ПОДВАЛА САЙТА (FOOTER)
+   ======================================================================== */
+
+.site-footer {
+    position: relative;
+    background: linear-gradient(180deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+    border-top: none;
+    overflow: hidden;
+}
+
+/* Декоративная линия над футером (аналогично header) */
+.footer-decoration {
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary-color) 20%, 
+        var(--secondary-color) 50%, 
+        var(--accent-color) 80%, 
+        transparent 100%);
+    animation: footer-glow 3s ease-in-out infinite alternate;
+    margin-bottom: var(--spacing-md);
+}
+
+@keyframes footer-glow {
+    0% { 
+        opacity: 0.8;
+        filter: drop-shadow(0 0 10px var(--primary-color));
+    }
+    100% { 
+        opacity: 1;
+        filter: drop-shadow(0 0 15px var(--secondary-color));
+    }
+}
+
+/* Контент подвала */
+.footer-content {
+    position: relative;
+    z-index: 2;
+    padding: var(--spacing-xxl) 0 var(--spacing-lg);
+}
+
+.footer-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.footer-section h3 {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-md);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+.footer-section p {
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer-section p:hover {
+    color: var(--secondary-color);
+}
+
+/* Социальные сети */
+.social-links {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 255, 255, 0.1);
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: var(--transition-normal);
+    text-decoration: none;
+}
+
+.social-link:hover {
+    background: var(--primary-color);
+    color: var(--darker-bg);
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
+}
+
+/* Меню в подвале */
+.footer-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-menu li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.footer-menu a {
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: var(--spacing-xs) 0;
+    display: block;
+    transition: var(--transition-fast);
+    position: relative;
+    padding-left: var(--spacing-sm);
+}
+
+.footer-menu a::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    transition: var(--transition-fast);
+}
+
+.footer-menu a:hover {
+    color: var(--accent-color);
+    padding-left: var(--spacing-md);
+}
+
+.footer-menu a:hover::before {
+    color: var(--secondary-color);
+}
+
+/* Контактная информация */
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.contact-info i {
+    color: var(--primary-color);
+    width: 20px;
+    text-align: center;
+}
+
+.contact-info a {
+    color: var(--gray-text);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.contact-info a:hover {
+    color: var(--secondary-color);
+}
+
+/* Нижняя часть подвала */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 0, 255, 0.3);
+    padding-top: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.footer-content .row > div:nth-child(2) {
+    padding-left: 7rem;
+}
+
+.footer-section:nth-child(2) {
+    transform: translateX(20px);
+}
+
+.footer-info p {
+    margin-bottom: var(--spacing-xs);
+    color: var(--gray-text);
+}
+
+.footer-info .heart {
+    color: var(--accent-color);
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.tech-stack {
+    font-style: italic;
+    color: var(--primary-color) !important;
+}
+
+/* Технологические значки */
+.tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    justify-content: flex-end;
+}
+
+.tech-badge {
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: var(--transition-fast);
+}
+
+.tech-badge:hover {
+    background: var(--accent-color);
+    color: var(--darker-bg);
+    transform: scale(1.05);
+}
+
+/* Кнопка "Наверх" */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    color: var(--darker-bg);
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100px);
+    transition: var(--transition-normal);
+    z-index: 1000;
+    box-shadow: 0 5px 20px rgba(0, 255, 255, 0.3);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--secondary-color);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 30px rgba(255, 0, 255, 0.4);
+}
+
+/* ===================================================================
+   КАСТОМНЫЙ СКРОЛЛБАР
+   ===================================================================
+*/
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--darker-bg, #050505);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #00ffff, #ff0080);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00ffff;
+}
+
